@@ -2,7 +2,7 @@ import {LitElement, html, css} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import {styleMap} from 'lit/directives/style-map.js';
 import {classMap} from 'lit/directives/class-map.js';
-import {selectors} from '@defencedigital/design-tokens';
+// import {selectors} from '@defencedigital/design-tokens';
 
 const BADGE_COLOR = {
   ACTION: 'action',
@@ -23,7 +23,7 @@ const BADGE_VARIANT = {
   REGULAR: 'regular',
 } as const;
 
-const {color} = selectors;
+// const {color} = selectors;
 
 /**
  * A `badge` element.
@@ -35,20 +35,20 @@ export class Badge extends LitElement {
   static override styles = css`
     :host {
       display: inline-block;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    span {
       vertical-align: middle;
       white-space: nowrap;
       color: white;
-      padding: 1rem 1.5rem;
-
+      padding: 0.5rem 0.75rem;
+      border-radius: 2px;
       font-size: 12px;
     }
 
-    :host(.variant--pill) {
+    .variant--pill {
       border-radius: 100px;
-    }
-
-    :host(.variant--regular) {
-      border-radius: 2px;
     }
   `;
 
@@ -61,7 +61,7 @@ export class Badge extends LitElement {
   override render() {
     return html`
       <span
-        style=${styleMap({'background-color': color(this.color, '500')})}
+        style=${styleMap({'background-color': 'black'})}
         class=${classMap({[`variant--${this.variant}`]: !!this.variant})}
       >
         <slot></slot>
