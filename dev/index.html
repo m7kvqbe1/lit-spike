@@ -8,14 +8,19 @@
     <script src="../node_modules/lit/polyfill-support.js"></script>
     <script type="module" src="../my-element.js"></script>
     <script type="module" src="../badge-element.js"></script>
-    <style>
-      p {
-        border: solid 1px blue;
-        padding: 8px;
-      }
-    </style>
+    <script type="module" src="../input-element.js"></script>
   </head>
   <body>
-    <badge-element variant="pill">Example Badge</badge-element>
+    <badge-element variant="pill" color="action">Example Badge</badge-element>
+    <badge-element variant="regular" color="action"
+      >Example Badge</badge-element
+    >
+    <badge-element variant="regular" color="success"
+      >Example Badge</badge-element
+    >
+    <badge-element variant="regular" color="warning"
+      >Example Badge</badge-element
+    >
+    <input-element placeHolder="Hello, World!" text-left />
   </body>
 </html>

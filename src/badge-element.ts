@@ -1,7 +1,7 @@
 import {LitElement, html, css} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import {styleMap} from 'lit/directives/style-map.js';
 import {classMap} from 'lit/directives/class-map.js';
+// import {styleMap} from 'lit/directives/style-map.js';
 // import {selectors} from '@defencedigital/design-tokens';
 
 const BADGE_COLOR = {
@@ -41,19 +41,35 @@ export class Badge extends LitElement {
     span {
       vertical-align: middle;
       white-space: nowrap;
-      color: white;
+      color: inherit;
       padding: 0.5rem 0.75rem;
       border-radius: 2px;
       font-size: 12px;
+      font-weight: 700;
     }
 
     .variant--pill {
       border-radius: 100px;
     }
+
+    .color--action {
+      background-color: rgb(221, 244, 255);
+      color: rgb(38, 97, 167);
+    }
+
+    .color--success {
+      background-color: rgb(229, 255, 217);
+      color: rgb(59, 111, 51);
+    }
+
+    .color--warning {
+      background-color: rgb(255, 255, 238);
+      color: rgb(140, 79, 23);
+    }
   `;
 
   @property({type: String})
-  color = BADGE_COLOR.NEUTRAL;
+  color = BADGE_COLOR.ACTION;
 
   @property({type: String})
   variant = BADGE_VARIANT.REGULAR;
@@ -61,8 +77,10 @@ export class Badge extends LitElement {
   override render() {
     return html`
       <span
-        style=${styleMap({'background-color': 'black'})}
-        class=${classMap({[`variant--${this.variant}`]: !!this.variant})}
+        class=${classMap({
+          [`variant--${this.variant}`]: !!this.variant,
+          [`color--${this.color}`]: !!this.color,
+        })}
       >
         <slot></slot>
       </span>
